@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcul de la somme de temps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 2;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        input[type="number"] {
+            width: 70px;
+            padding: 3px;
+            margin-right: 15px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 5px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <strong>Entrer le premier temps :</strong><br>
+        Heure(s) <input type="number" id="h1" value="0">
+        Minute(s) <input type="number" id="m1" value="0">
+        Seconde(s) <input type="number" id="s1" value="0">
+    </div>
+
+    <div class="section">
+        <strong>Entrer le Deuxième temps :</strong><br>
+        Heure(s) <input type="number" id="h2" value="0">
+        Minute(s) <input type="number" id="m2" value="0">
+        Seconde(s) <input type="number" id="s2" value="0">
+    </div>
+
+    <div class="section">
+        <strong>Entrer le troisième temps :</strong><br>
+        Heure(s) <input type="number" id="h3" value="0">
+        Minute(s) <input type="number" id="m3" value="0">
+        Seconde(s) <input type="number" id="s3" value="0">
+    </div>
+
+    <div class="section">
+        <strong>Total des trois temps :</strong><br>
+        Jour(s) <input type="number" id="res_j" readonly>
+        Heure(s) <input type="number" id="res_h" readonly>
+        Minute(s) <input type="number" id="res_m" readonly>
+        Seconde(s) <input type="number" id="res_s" readonly>
+    </div>
+
+    <div class="buttons">
+        <button onclick="calculerSomme()">Somme</button>
+        <button onclick="effacerChamps()">Effacer</button>
+    </div>
+
+    <script>
+      
+function calculerSomme() {
+
+    let h1 = Number(document.getElementById("h1").value);
+    let m1 = Number(document.getElementById("m1").value);
+    let s1 = Number(document.getElementById("s1").value);
+
+    let h2 = Number(document.getElementById("h2").value);
+    let m2 = Number(document.getElementById("m2").value);
+    let s2 = Number(document.getElementById("s2").value);
+
+    let h3 = Number(document.getElementById("h3").value);
+    let m3 = Number(document.getElementById("m3").value);
+    let s3 = Number(document.getElementById("s3").value);
+
+    let secondes = s1 + s2 + s3;
+    let minutes = m1 + m2 + m3;
+    let heures = h1 + h2 + h3;
+
+    minutes = minutes + Math.floor(secondes / 60);
+    secondes = secondes % 60;
+
+    heures = heures + Math.floor(minutes / 60);
+    minutes = minutes % 60;
+
+    let jours = Math.floor(heures / 24);
+    heures = heures % 24;
+
+    document.getElementById("res_j").value = jours;
+    document.getElementById("res_h").value = heures;
+    document.getElementById("res_m").value = minutes;
+    document.getElementById("res_s").value = secondes;
+
+}
+
+function effacerChamps() {
+
+    document.getElementById("h1").value = 0;
+    document.getElementById("m1").value = 0;
+    document.getElementById("s1").value = 0;
+
+    document.getElementById("h2").value = 0;
+    document.getElementById("m2").value = 0;
+    document.getElementById("s2").value = 0;
+
+    document.getElementById("h3").value = 0;
+    document.getElementById("m3").value = 0;
+    document.getElementById("s3").value = 0;
+
+    document.getElementById("res_j").value = "";
+    document.getElementById("res_h").value = "";
+    document.getElementById("res_m").value = "";
+    document.getElementById("res_s").value = "";
+
+}
+
+    </script>
+
+</body>
+</html>

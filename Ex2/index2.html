@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Validation d'Email</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input {
+      padding: 8px;
+      width: 250px;
+      font-size: 14px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Vérification de l'adresse email</h2>
+
+  <input type="text" id="email" placeholder="Ex : exemple@domaine.com">
+  <button id="btn">Vérifier</button>
+
+  <p id="result" class="status"></p>
+
+  <script>
+ let btn = document.getElementById("btn");
+ let para = document.getElementById("result");
+
+ btn.onclick = function() {
+ let valeur1 = document.getElementById("email").value.trim();
+  let positionA = valeur1.indexOf("@");
+  let positionPoint = valeur1.indexOf(".", positionA);
+  if(positionA > 0 &&  positionPoint > positionA + 1){
+
+    para.textContent = "Email valide";
+  }else if(valeur1 === ""){
+    para.textContent = "Pas d'Email tapé veuillez ecrire votre email que vous voulez vérifier ";
+
+  }
+  else{
+    para.textContent = "Email non valide";
+  }
+ }
+  </script>
+
+</body>
+</html>
