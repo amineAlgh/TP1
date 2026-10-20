@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2</title>
+    <link rel="stylesheet" href="myStyle.css">
+</head>
+<body>
+
+    <h1>
+        <ul class="TITREE">
+        <li>QCM a choix simple :  </li>
+        </ul>
+    </h1>
+    
+    <p> La première question : <span class="spa1">  Quel est le plus grand océan de la Terre ? </span> </p>
+<input type="radio" id="q1A" name="q1" value="A">
+<label for="q1A"> L'océan Atlantique </label>
+<br>
+<input type="radio" id="q1B" name="q1" value="B">
+<label for="q1B"> L'océan Pacifique </label>
+<br>
+<input type="radio" id="q1C" name="q1" value="C">
+<label for="q1C"> L'océan Indien </label>
+<br>
+<p> La deuxième question : <span class="spa1">En quelle année a eu lieu la chute du mur de Berlin ?</span></p>
+
+<input type="radio" id="q2A" name="q2" value="A">
+<label for="q2A"> 1981 </label>
+<br>
+<input type="radio" id="q2B" name="q2" value="B">
+<label for="q2B"> 1989 </label>
+<br>
+<input type="radio" id="q2C" name="q2" value="C">
+<label for="q2C"> 1991 </label>
+<br>
+
+<h1> 
+    <ul class="TITREE">
+        <li>
+    QCM a choix multiple :</li>
+        </ul></h1>
+<p> La toroisième question : <span class="spa1">Parmi les planètes suivantes, lesquelles sont des géantes gazeuses ?</span></p>
+<input type="checkbox" id="q3A" name="q3" value="A">
+<label for="q3A">Jupiter</label> <br>
+<input type="checkbox" id="q3B" name="q3" value="B">
+<label for="q3B">Mars</label><br>
+<input type="checkbox" id="q3C" name="q3" value="C">
+<label for="q3C">Saturne</label><br>
+<input type="checkbox" id="q3D" name="q3" value="D">
+<label for="q3D">La terre </label>
+
+<p> La quatrième question : <span class="spa1">Parmi ces œuvres, lesquelles ont été peintes par Léonard de Vinci ?</span></p>
+<input type="checkbox" id="q4A" name="q4" value="A">
+<label for="q4A">La Joconde</label><br>
+
+<input type="checkbox" id="q4B" name="q4" value="B">
+<label for="q4B">Les Tournesols</label><br>
+
+<input type="checkbox" id="q4C" name="q4" value="C">
+<label for="q4C">La Cène</label><br>
+
+<input type="checkbox" id="q4D" name="q4" value="D">
+<label for="q4D">La Nuit étoilée</label><br>
+
+<p> La cinquième question : <span class="spa1">Parmi ces auteurs, lesquels ont reçu le Prix Nobel de littérature ?</span></p>
+
+<input type="checkbox" id="q5A" name="q5" value="A">
+<label for="q5A"> Émile Zola </label> <br>
+
+<input type="checkbox" id="q5B" name="q5" value="B">
+<label for="q5B"> Ernest Hemingway </label><br>
+
+<input type="checkbox" id="q5C" name="q5" value="C">
+<label for="q5C"> Victor Hugo </label><br>
+
+<input type="checkbox" id="q5D" name="q5" value="D">
+<label for="q5D"> Albert Camus </label>
+<div class="papa">
+    <div class="para">
+<p>Après avoir réviser vos réponse clicker sur le button pour confirmer : </p>
+</div>
+<div class="btn">
+<button id="submit">submit</button>
+<button id="effacer">effacer</button>
+<button id="bonne">Les réponses</button>
+</div>
+</div>
+<p id="p1"></p><br>
+<p id="p2"></p><br>
+<p id="p3"></p><br>
+<p id="p4"></p><br>
+<p id="p5"></p>
+
+
+
+
+    <script>
+
+let btnS = document.getElementById("submit") ;
+let p1 = document.getElementById("p1");
+let p2 = document.getElementById("p2");
+let p3 = document.getElementById("p3");
+let p4 = document.getElementById("p4");
+let p5 = document.getElementById("p5");
+let btnE = document.getElementById("effacer");
+
+
+btnS.onclick = function () {
+
+const rep1 = document.querySelector('input[name="q1"]:checked')?.value ;
+const rep2 = document.querySelector('input[name="q2"]:checked')?.value ;
+
+    if(rep1 === "B") {
+        p1.textContent = "La première réponse est juste  !!"
+    }else if(rep1 == null){
+ p1.textContent = "Pas de réponse pour la première question :( "
+    }else{
+        p1.textContent("La première question est fausse");
+    }
+    if(rep2 === "B") {
+      
+          p2.textContent = "La deuxième réponse est juste  "
+    }else if (rep2 ==null){
+         
+ p2.textContent = "La deuxième réponse est vide :( "
+}else{
+     p2.textContent = "La deuxième réponse est fausse :( "
+
+}
+const rep3 = document.querySelectorAll('input[name = "q3"]:checked');
+ const bonneRep3 = ["A", "C"];
+ const repChoisis3 = Array.from(rep3).map(checkbox => checkbox.value);
+ if (bonneRep3.length === repChoisis3.length && bonneRep3.every( (element,index) => element === repChoisis3[index] )) {
+    p3.textContent = "La question 3 est juste !";
+} else if(repChoisis3.every((element) => element == null)) {
+    p3.textContent = "q3 est vide .";
+}else{
+    p3.textContent = "q3 est fausse"
+}
+
+let rep4 = document.querySelectorAll('input[name ="q4"]:checked');
+const repChoisis4 = Array.from(rep4).map(checkbox => checkbox.value);
+const bonneRep4 = ["A", "C"];
+
+if(repChoisis4.length === bonneRep4.length && bonneRep4.every((element) => repChoisis4.includes(element))){
+    p4.textContent = "q4 est juste";
+}else if(repChoisis4.every((element) => element == null)){
+    p4.textContent = "pas de réponse pour q4";
+}else {
+    p4.textContent = "q4 fausse";
+}
+let rep5 = document.querySelectorAll('input[name="q5"]:checked');
+const bonneRep5 = ["A", "C"];
+const repChoisis5 = Array.from(rep5).map(checkbox => checkbox.value);
+
+if(bonneRep5.length === repChoisis5.length && bonneRep5.every((element) => repChoisis5.includes(element))){
+    p5.textContent = "réponse juste";
+}else if(repChoisis5.every((element) => element == null)){
+    p5.textContent = "q5 est vide";
+}else {
+    p5.textContent = "q5 est malheuresement fausse ! ";
+}
+}
+let btnR = document.getElementById("bonne");
+btnR.onclick = function() {
+    window.location.href = "file:///C:/Users/elgli/OneDrive/Bureau/Dev/TP1%20web/Ex1/bonne.html"
+}
+
+
+
+
+btnE.onclick = function() {
+
+  document.querySelectorAll('input:checked').forEach(element => element.checked = false);
+p1.textContent="";
+p2.textContent="";
+p3.textContent="";
+p4.textContent="";
+p5.textContent="";
+}
+
+    </script>
+</body>
+</html>

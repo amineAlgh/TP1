@@ -1,0 +1,14 @@
+.spa1 {
+    color:aqua;
+   
+}
+.TITREE{ 
+    list-style-type: square;
+}
+.papa{
+    display: flex;
+    gap:20px;
+}
+.btn{
+padding-top:15px;
+}
